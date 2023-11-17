@@ -1,0 +1,160 @@
+﻿@model IEnumerable<Reservuary.Models.tanks>
+@{
+    ViewBag.Title = "Pinsk";
+}
+
+<div id="ServicesModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content" id='ServicesModalContent'>
+
+        </div>
+    </div>
+</div>
+
+<div id="ServicesModalDelete" class="modal fade">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content" id='ServicesModalDeleteContent'>
+
+        </div>
+    </div>
+</div>
+
+
+<h3>Пинск</h3>
+<div>
+    <table>
+        <tr>
+            <td>
+                <input type="date" class="form-control btn-block" id="datapicker" value="@DateTime.Now" />
+            </td>
+            <td>
+                &nbsp;&nbsp;
+            </td>
+            <td>
+                <button type="submit" class="btn btn-info" style="min-width:100px" onclick="GetDB()">Получить данные</button>
+            </td>
+            <td>
+                &nbsp;&nbsp;
+            </td>
+            <td>
+                <button type="submit" class="btn btn-info" style="min-width:100px" onclick="WriteDB()">Записать данные</button>
+            </td>
+        </tr>
+    </table>
+</div>
+<hr>
+<style type="text/css">
+    TH {
+        background: #EFF5FB; /* Цвет фона */
+        border-bottom: double;
+    }
+
+    tr:nth-child(odd) {
+        background: #EFF5FB; /* Цвет фона */
+    }
+
+    tr:nth-child(even) {
+        background: #ffffff; /* Цвет фона */
+    }
+</style>
+
+<div id="tab">
+
+    <table class="table">
+        <tr>
+            <th width="20%">
+                Резервуары
+            </th>
+            <th width="10%">
+                Уровень нефти по уровнемеру, (мм)
+            </th>
+            <th width="10%">
+                Объем при 20&deg;С, м<sup><i>3</i></sup>
+            </th>
+            <th width="10%">
+                Температура, (&deg;С)
+            <th width="10%">
+                Объем приведенный, (м<sup><i>3</i></sup>)
+            </th>
+            <th width="10%">
+                Плотность при текущей температуре, (кг/м)
+            </th>
+            <th width="10%">
+                Масса, (т)
+            </th>
+            <th width="10%">
+                Уровень подтоварной воды, (мм)
+            </th>
+            <th width="10%">
+                Объем подтоварной воды, ( м<sup><i>3</i></sup>)
+            </th>
+        </tr>
+    </table>
+
+    <table class="table" id="tabb">
+
+        @{
+            int u = 0;
+        }
+
+        @foreach (var item in Model)
+        {
+            u++;
+            <tr tr class="odd">
+                <td>
+                    <input type="hidden" class="form-control btn-block" id="LocID_@u" value="@item.location_ID">
+                </td>
+                <td>
+                    <input type="hidden" class="form-control btn-block" id="ID_@u" value="@item.tank_ID">
+                </td>
+                <td width="20%">
+                    @Html.DisplayFor(modelItem => item.tank_NAME)
+                </td>
+                <td width="10%">
+                    @{
+                        if (item.opc_TAG == "PinskNS2.Level.TankLeak200_1")
+                        {<input type="text" class="form-control btn-block" id="Uroven_@u" value="@ViewBag.PinUr1">}
+                        else
+                                 if (item.opc_TAG == "PinskNS2.Level.TankLeak200_2")
+                        {<input type="text" class="form-control btn-block" id="Uroven_@u" value="@ViewBag.PinUr2">}
+                        else
+                                 if (item.opc_TAG == "PinskNS2.Level.TankLeak25")
+                        {<input type="text" class="form-control btn-block" id="Uroven_@u" value="@ViewBag.PinUr3">}
+                        else
+                                 if (item.opc_TAG == "PinskScr.Level.TankLeak25")
+                        {<input type="text" class="form-control btn-block" id="Uroven_@u" value="@ViewBag.PinUr4">}
+                        else
+                                 if (item.opc_TAG == "PinskNS1.Level.TankLeak40")
+                        {<input type="text" class="form-control btn-block" id="Uroven_@u" value="@ViewBag.PinUr5">}
+
+                        else
+                        {
+                            <input type="text" class="form-control btn-block" id="Uroven_@u" value="Упс!">
+                        }
+                    }
+                </td>
+                <td width="10%">
+                    <input type="text" class="form-control btn-block" id="V20_@u">
+                </td>
+                <td width="10%">
+                    <input type="text" class="form-control btn-block" id="Temperat_@u">
+                </td>
+                <td width="10%">
+                    <input type="text" class="form-control btn-block" id="V_@u">
+                </td>
+                <td width="10%">
+                    <input type="text" class="form-control btn-block" id="Plotnost_@u">
+                </td>
+                <td width="10%">
+                    <input type="text" class="form-control btn-block" id="massa_@u">
+                </td>
+                <td width="10%">
+                    <input type="text" class="form-control btn-block" id="UrovH2O_@u">
+                </td>
+                <td width="10%">
+                    <input type="text" class="form-control btn-block" id="VH2O_@u">
+                </td>
+            </tr>
+        }
+    </table>
+</div>

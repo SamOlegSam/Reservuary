@@ -1,0 +1,191 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div id="ServicesModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content" id='ServicesModalContent'>
+
+        </div>
+    </div>
+</div>
+
+<div id="ServicesModalDelete" class="modal fade">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content" id='ServicesModalDeleteContent'>
+
+        </div>
+    </div>
+</div>
+
+
+<h3>Все филиалы</h3>
+<div>
+    <table>
+        <tr>
+            <td>
+                <input type="date" class="form-control btn-block" id="datapicker" value="@DateTime.Now"/>
+            </td>
+            <td>
+                &nbsp;&nbsp;
+            </td>
+            <td>
+                <button type="submit" class="btn btn-info" style="min-width:100px" onclick="GetDB()">Получить данные</button>
+            </td>
+            <td>
+                &nbsp;&nbsp;
+            </td>
+            <td>
+                <button type="submit" class="btn btn-info" style="min-width:100px" onclick="WriteDB()">Записать данные</button>
+            </td>
+        </tr>
+    </table>
+</div>
+<hr>
+<style type="text/css">
+    TH {
+        background: #EFF5FB; /* Цвет фона */
+        border-bottom: double;
+    }
+
+    tr:nth-child(odd) {
+        background: #EFF5FB; /* Цвет фона */
+    }
+
+    tr:nth-child(even) {
+        background: #ffffff; /* Цвет фона */
+    }
+</style>
+
+<div id="tab">
+
+    <table class="table"> 
+
+        <tr>
+            <th>
+                Филиал
+            </th>
+            <th>
+                Объем, м.куб.
+            </th>
+            <th>
+                Масса, т.
+            </th>
+
+        </tr>
+
+    </table>
+
+    <table class="table">
+        
+        <tr>
+            <td>
+                <h5>Гомель</h5>
+            </td>
+            <td>
+                <input type="text" style="width:30%;" class="form-control btn-block" id="vgom">
+            </td>
+            <td>
+                <input type="text" style="width:30%;" class="form-control btn-block" id="mgom">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h5>Защебье</h5>
+            </td>
+            <td>
+                <input type="text" style="width:30%;" class="form-control btn-block" id="vzas">
+            </td>
+            <td>
+                <input type="text" style="width:30%;" class="form-control btn-block" id="mzas">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h5>Мозырь</h5>
+            </td>
+            <td>
+                <input type="text" style="width:30%;" class="form-control btn-block" id="vmoz">
+            </td>
+            <td>
+                <input type="text" style="width:30%;" class="form-control btn-block" id="mmoz">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h5>Туров</h5>
+            </td>
+            <td>
+                <input type="text" style="width:30%;" class="form-control btn-block" id="vtur">
+            </td>
+            <td>
+                <input type="text" style="width:30%;" class="form-control btn-block" id="mtur">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h5>Пинск</h5>
+            </td>
+            <td>
+                <input type="text" style="width:30%;" class="form-control btn-block" id="vpin">
+            </td>
+            <td>
+                <input type="text" style="width:30%;" class="form-control btn-block" id="mpin">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h5>Кобрин</h5>
+            </td>
+            <td>
+                <input type="text" style="width:30%;" class="form-control btn-block" id="vkob">
+            </td>
+            <td>
+                <input type="text" style="width:30%;" class="form-control btn-block" id="mkob">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h5>Новополоцк</h5>
+            </td>
+            <td>
+                <input type="text" style="width:30%;" class="form-control btn-block" id="vnov">
+            </td>
+            <td>
+                <input type="text" style="width:30%;" class="form-control btn-block" id="mnov">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h5>Горки</h5>
+            </td>
+            <td>
+                <input type="text" style="width:30%;" class="form-control btn-block" id="vgor">
+            </td>
+            <td>
+                <input type="text" style="width:30%;" class="form-control btn-block" id="mgor">
+            </td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+            
+<tr>
+            <th>
+               Суммарно
+            </th>
+            <th>
+                <input type="text" style="width:30%;" class="form-control btn-block" id="vsumm">
+            </th>
+            <th>
+                <input type="text" style="width:30%;" class="form-control btn-block" id="msumm">
+            </th>
+                
+        </tr>
+    </table>
+    
+    </div>
